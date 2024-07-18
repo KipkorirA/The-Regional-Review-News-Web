@@ -1,42 +1,189 @@
-// JavaScript code to fetch and display breaking news image
+// Selecting DOM elements
+const breakingImg = document.querySelector('#breakingImg img');
+const breakingNewsDesc = document.querySelector('#breakingNews .description');
+const topNewsContainer = document.querySelector('.topNews');
+const sportsNewsContainer = document.querySelector('#sportsNews .newsBox');
+const technologyNewsContainer = document.querySelector('#technologyNews .newsBox');
+const businessNewsContainer = document.querySelector('#businessNews .newsBox');
 
-const apiUrl = "http://localhost:3000/news";
+// URL for fetching news data
+const newsUrl = "http://localhost:3000/news";
 
+// Function to fetch data from the server
 const fetchData = async () => {
     try {
-        const url = `${apiUrl}`;
-        const response = await fetch(url);
+        const response = await fetch(newsUrl);
         if (!response.ok) {
-            throw new Error('Failed to fetch data');
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        console.log(data); // Log the entire response to understand its structure
-
-        return data; // Return the entire data object
+        console.log('Fetched data:', data);
+        return data.news || []; // Assuming 'news' is the array of categories in the response
     } catch (error) {
-        console.error('Error fetching data:', error);
-        return null; // Return null or handle the error as per your requirement
+        console.error(`Error fetching data:`, error);
+        return [];
     }
-};
+}
 
-// Function to add breaking news image and text to the HTML
+// Function to process and add breaking news to the DOM
 const addBreakingNews = (data) => {
-    const breakingImgElement = document.querySelector('#breakingImg img');
-    const breakingNewsTextElement = document.querySelector('#breakingNews .description h6');
-
-    if (data && data.length > 0 && data[0].breaking && data[0].breaking.image) {
-        breakingImgElement.src = data[0].breaking.image;
-        breakingNewsTextElement.textContent = data[0].breaking.title; // Assuming you have a title property in your JSON
+    console.log('Adding breaking news:', data); // Log the data being processed
+    if (data.items && data.items.length > 0) {
+        const breaking = data.items.find(item => item.id === 1); // Find the item with ID 1
+        if (breaking && breaking.image && breaking.title && breaking.date) {
+            breakingImg.src = breaking.image;
+            breakingImg.alt = breaking.title;
+            breakingNewsDesc.innerHTML = `<h6>${breaking.title}</h6><p>${breaking.date}</p>`;
+        } else {
+            console.error('Incomplete breaking news data:', breaking);
+        }
     } else {
-        breakingImgElement.src = '/path/to/default/image.jpg'; // Provide a default image path
-        breakingNewsTextElement.textContent = 'No breaking news available'; // Default text
+        console.error('No breaking news data available');
     }
-};
+}
 
-// Call fetchData and handle the result
-fetchData()
-    .then(addBreakingNews)
-    .catch(error => {
-        console.error('Error in fetching and displaying breaking news:', error);
-        // Handle error if needed
+// Function to process and add top news to the DOM
+const addTopNews = (data) => {
+    if (topNewsContainer) { // Check if topNews container exists
+        let html = '';
+        data.items.forEach(element => {
+            if (element.id === 1) { // Check if the item has ID 1
+                if (element.title && element.image && element.date) {
+                    let title = element.title.length < 100 ? element.title : element.title.slice(0, 100) + "...";
+                    html += `<div class="newsCard">
+                                <div class="img">
+                                    <img src="${element.image}" alt="${element.title}">
+                                </div>
+                                <div class="text">
+                                    <div class="title">
+                                        <a href="#"><p>${title}</p></a>
+                                    </div>
+                                    <div class="date">${element.date}</div>
+                                </div>
+                            </div>`;
+                } else {
+                    console.error('Incomplete top news data:', element);
+                }
+            }
+        });
+        topNewsContainer.innerHTML = html;
+    } else {
+        console.error('Top news container not found');
+    }
+}
+
+// Function to process and add sports news to the DOM
+const addSportsNews = (data) => {
+    if (sportsNewsContainer) { // Check if sportsNewsContainer exists
+        let html = '';
+        data.items.forEach(element => {
+            if (element.id === 1 || element.id === 2) { // Check if the item has ID 1 or 2
+                if (element.title && element.image && element.date) {
+                    let title = element.title.length < 100 ? element.title : element.title.slice(0, 100) + "...";
+                    html += `<div class="newsCard">
+                                <div class="img">
+                                    <img src="${element.image}" alt="${element.title}">
+                                </div>
+                                <div class="text">
+                                    <div class="title">
+                                        <a href="#"><p>${title}</p></a>
+                                    </div>
+                                    <div class="date">${element.date}</div>
+                                </div>
+                            </div>`;
+                } else {
+                    console.error('Incomplete sports news data:', element);
+                }
+            }
+        });
+        sportsNewsContainer.innerHTML = html;
+    } else {
+        console.error('Sports news container not found');
+    }
+}
+
+// Function to process and add technology news to the DOM
+const addTechnologyNews = (data) => {
+    if (technologyNewsContainer) { // Check if technologyNewsContainer exists
+        let html = '';
+        data.items.forEach(element => {
+            if (element.id === 1 || element.id === 2) { // Check if the item has ID 1 or 2
+                if (element.title && element.image && element.date) {
+                    let title = element.title.length < 100 ? element.title : element.title.slice(0, 100) + "...";
+                    html += `<div class="newsCard">
+                                <div class="img">
+                                    <img src="${element.image}" alt="${element.title}">
+                                </div>
+                                <div class="text">
+                                    <div class="title">
+                                        <a href="#"><p>${title}</p></a>
+                                    </div>
+                                    <div class="date">${element.date}</div>
+                                </div>
+                            </div>`;
+                } else {
+                    console.error('Incomplete technology news data:', element);
+                }
+            }
+        });
+        technologyNewsContainer.innerHTML = html;
+    } else {
+        console.error('Technology news container not found');
+    }
+}
+
+// Function to process and add business news to the DOM
+const addBusinessNews = (data) => {
+    if (businessNewsContainer) { // Check if businessNewsContainer exists
+        let html = '';
+        data.items.forEach(element => {
+            if (element.id === 1 || element.id === 2 || element.id === 3) { // Check if the item has ID 1, 2, or 3
+                if (element.title && element.image && element.date) {
+                    let title = element.title.length < 100 ? element.title : element.title.slice(0, 100) + "...";
+                    html += `<div class="newsCard">
+                                <div class="img">
+                                    <img src="${element.image}" alt="${element.title}">
+                                </div>
+                                <div class="text">
+                                    <div class="title">
+                                        <a href="#"><p>${title}</p></a>
+                                    </div>
+                                    <div class="date">${element.date}</div>
+                                </div>
+                            </div>`;
+                } else {
+                    console.error('Incomplete business news data:', element);
+                }
+            }
+        });
+        businessNewsContainer.innerHTML = html;
+    } else {
+        console.error('Business news container not found');
+    }
+}
+
+// Function to fetch and display all types of news
+const fetchAndDisplayData = async () => {
+    const newsData = await fetchData();
+    newsData.forEach(category => {
+        switch (category.category) {
+            case 'breaking':
+                addBreakingNews(category);
+                break;
+            case 'sports':
+                addSportsNews(category);
+                break;
+            case 'technology':
+                addTechnologyNews(category);
+                break;
+            case 'business':
+                addBusinessNews(category);
+                break;
+            default:
+                console.error('Unknown category:', category.category);
+        }
     });
+}
+
+// Fetch and display news data when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', fetchAndDisplayData);
