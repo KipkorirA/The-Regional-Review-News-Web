@@ -134,7 +134,7 @@ const addBusinessNews = (data) => {
     if (businessNewsContainer) { 
         let html = '';
         data.items.forEach(element => {
-            if (element.id === 1 || element.id === 2 || element.id === 3) { 
+            if (element.id !== 0) { 
                 if (element.title && element.image && element.date) {
                     let title = element.title.length < 100 ? element.title : element.title.slice(0, 100) + "...";
                     html += `<div class="newsCard" id="section-${element.id}">
@@ -164,7 +164,7 @@ const addLifeStyleNews = (data) => {
     if (lifeStyleNewsContainer) { 
         let html = '';
         data.items.forEach(element => {
-            if (element.id === 1) { 
+            if (element.id !== 0) { 
                 if (element.title && element.image && element.date) {
                     let title = element.title.length < 100 ? element.title : element.title.slice(0, 100) + "...";
                     html += `<div class="newsCard" id="section-${element.id}">
