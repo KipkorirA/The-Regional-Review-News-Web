@@ -11,6 +11,56 @@ body {
     color: rgb(26, 5, 5);
     margin: 0;
     padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-color: auto;
+    padding: 0 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: top 0.3s, background-color 0.3s, color 0.3s;
+}
+
+.header .logo {
+    background-color: whitesmoke;
+    border-radius: 20px;
+    width: 150px; 
+    height: 150px; 
+    overflow: hidden; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header .logo img {
+    width: 100%; /* Fill the container */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover the container */
+}
+
+.header.hidden {
+    top: -200px;
+}
+
+.header.dark-mode {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
 }
 
 /* Navigation styling */
@@ -25,7 +75,7 @@ nav ul li {
     padding: 0 10px;
     border-left: 1px solid transparent;
     border-right: 1px solid transparent;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s;
 }
 
 nav ul li:hover {
@@ -39,19 +89,20 @@ nav ul li a {
     font-size: 16px;
 }
 
-.header {
-    position: fixed;
-    top: 10px;
-    left: 0;
-    width: 100%;
-    height: 200px;
-    background-color: #fff;
-    padding: 0 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+/* Dark mode navigation */
+body.dark-mode nav ul li a {
+    color: #e0e0e0;
+}
+
+nav.dark-mode ul li a:hover {
+    color: #ff5733; /* Optional: Change hover color for better contrast */
+}
+
+.feedback{
+ padding: 10px 20px;
+ display: flex;
+ justify-content: space-around;
+ background-color: gold;
 }
 
 /* Filter Button */
@@ -59,7 +110,7 @@ nav ul li a {
     background-color: rgb(77, 64, 46);
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: px 20px;
     font-size: 16px;
     cursor: pointer;
     border-radius: 4px;
@@ -70,12 +121,27 @@ nav ul li a {
     background-color: rgb(102, 88, 68);
 }
 
+/* Dark mode filter button */
+body.dark-mode #filterButton {
+    background-color: rgb(99, 82, 58);
+    color: #e0e0e0;
+}
+
+body.dark-mode #filterButton:hover {
+    background-color: rgb(122, 100, 72);
+}
+
+/* Top Headlines */
 .topHeadlines {
     margin: 200px 0 0;
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 30px;
     border-top: 2px solid #ccc;
+}
+
+.topHeadlines.dark-mode {
+    border-top: 2px solid #444;
 }
 
 .topHeadlines .title {
@@ -87,11 +153,19 @@ nav ul li a {
     text-transform: uppercase;
 }
 
+.topHeadlines.dark-mode .title {
+    color: #e0e0e0;
+}
+
 .topHeadlines .left {
     padding: 20px;
-    background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.topHeadlines .left.dark-mode {
+    background-color: #1e1e1e;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .topHeadlines .left .title {
@@ -103,6 +177,10 @@ nav ul li a {
     color: #f0ebeb;
     padding: 10px;
     border-radius: 8px;
+}
+
+.topHeadlines.dark-mode .left .title {
+    background-color: #e04e39;
 }
 
 .topHeadlines .left .img {
@@ -122,19 +200,25 @@ nav ul li a {
 }
 
 .topHeadlines .left .text {
+    background-color: goldenrod;
     padding: 20px;
+    color: #fff;
     text-align: center;
 }
 
 .topHeadlines .left .description {
     font-size: 18px;
-    color: #333;
+    color: #d8d1d1;
     line-height: 1.5;
     text-align: justify;
 }
 
+.topHeadlines.dark-mode .left .description {
+    color: #b0b0b0;
+}
+
 .topHeadlines .right {
-    background-color: #f2f2f2;
+    background-color: auto;
     width: 100%;
     padding: 20px;
     display: flex;
@@ -145,12 +229,22 @@ nav ul li a {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.topHeadlines.dark-mode .right {
+    background-color: #2e2e2e;
+}
+
 .topHeadlines .right .title {
+    background-color: rebeccapurple;
+    width: 100%;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
-    color: #333;
+    color: #f0e9e9;
+}
+
+.topHeadlines.dark-mode .right .title {
+    color: #e0e0e0;
 }
 
 .topHeadlines .right .topNews {
@@ -163,6 +257,11 @@ nav ul li a {
     padding: 10px;
 }
 
+.topHeadlines.dark-mode .right .topNews {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+}
+
 .topHeadlines .right .topNews .news {
     display: flex;
     align-items: center;
@@ -172,6 +271,10 @@ nav ul li a {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+}
+
+.topHeadlines.dark-mode .right .topNews .news {
+    background-color: #2e2e2e;
 }
 
 .topHeadlines .right .topNews .news:hover {
@@ -204,6 +307,10 @@ nav ul li a {
     margin-bottom: 5px;
 }
 
+.topHeadlines.dark-mode .right .topNews .news .text .title {
+    color: #e0e0e0;
+}
+
 .topHeadlines .right .topNews .news .text .description {
     font-size: 14px;
     color: #666;
@@ -211,23 +318,27 @@ nav ul li a {
     margin-bottom: 5px;
 }
 
+.topHeadlines.dark-mode .right .topNews .news .text .description {
+    color: #b0b0b0;
+}
+
 .topHeadlines .right .topNews .news .text .source {
     font-size: 12px;
     color: #999;
 }
 
+.topHeadlines.dark-mode .right .topNews .news .text .source {
+    color: #666;
+}
+
+/* Page 2 */
 .page2 {
-    background-color: rgb(202, 156, 55);
     padding: 50px;
     min-height: 100vh;
 }
 
 .page2 .news {
-    margin-bottom: 40px;
-}
-
-.page2 .news:last-child {
-    margin-bottom: 0;
+    margin-top: 50px;
 }
 
 .page2 .news .title {
@@ -238,102 +349,159 @@ nav ul li a {
     margin-bottom: 20px;
 }
 
-.page2 .news .newsBox {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+.page2.dark-mode .news .title {
+    color: #e0e0e0;
 }
 
-.page2 .news .newsBox .newsCard {
-    width: calc(33.33% - 20px);
+.page2 .news .newsCard {
+    display: flex;
     margin-bottom: 20px;
     background-color: #fff;
-    border: 1px solid #ccc;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
 }
 
-.page2 .news .newsBox .newsCard img {
+.page2.dark-mode .news .newsCard {
+    background-color: #1e1e1e;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.page2 .news .newsCard:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.page2 .news .newsCard .img {
+    width: 150px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.page2 .news .newsCard .img img {
     width: 100%;
-    height: 200px;
+    height: auto;
     object-fit: cover;
 }
 
-.page2 .news .newsBox .newsCard .text {
+.page2 .news .newsCard .text {
     padding: 15px;
 }
 
-.page2 .news .newsBox .newsCard .title p {
-    font-size: 16px;
+.page2 .news .newsCard .text .title {
+    font-size: 18px;
+    font-weight: bold;
     color: #333;
     margin-bottom: 10px;
-    text-align: center;
 }
 
-.page2 .news .newsBox .newsCard .title p:hover {
-    text-decoration: underline;
+.page2.dark-mode .news .newsCard .text .title {
+    color: #e0e0e0;
 }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-    width: 8px;
+.page2 .news .newsCard .text .date {
+    font-size: 14px;
+    color: #666;
 }
 
-::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: burlywood;
-    border-radius: 100px;
-}
-
-.topHeadlines .right .topNews::-webkit-scrollbar {
-    width: 6px;
-}
-
-.topHeadlines .right .topNews::-webkit-scrollbar-thumb {
-    background-color: rgb(77, 64, 46);
-}
-
-.feedback {
-    background-color: #f5f5f5;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.feedback h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-#feedbackText {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-#feedbackText:focus {
-    outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-}
-
-#feedbackForm button[type="submit"] {
-    background-color: #3498db;
-    color: white;
+/* Dark mode toggle button */
+#darkModeToggle {
+    background-color: #333;
+    color: #fff;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 4px;
-    font-size: 1rem;
+    margin: 20px;
 }
 
-#feedbackForm button[type="submit"]:hover {
-    background-color: #2980b9;
+#darkModeToggle:hover {
+    background-color: #555;
+}
+
+body.dark-mode #darkModeToggle {
+    background-color: #444;
+}
+
+body.dark-mode #darkModeToggle:hover {
+    background-color: #666;
+}
+
+/* Feedback Section */
+.feedback-section {
+    background-color: #f9f9f9;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.feedback-section.dark-mode {
+    background-color: #2e2e2e;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.feedback-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.feedback-section.dark-mode h2 {
+    color: #e0e0e0;
+}
+
+.feedback-section .feedback-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.feedback-section .feedback-form label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.feedback-section.dark-mode .feedback-form label {
+    color: #e0e0e0;
+}
+
+.feedback-section .feedback-form input,
+.feedback-section .feedback-form textarea {
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.feedback-section.dark-mode .feedback-form input,
+.feedback-section.dark-mode .feedback-form textarea {
+    background-color: #3a3a3a;
+    border: 1px solid #555;
+    color: #e0e0e0;
+}
+
+.feedback-section .feedback-form button {
+    background-color: rgb(77, 64, 46);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.feedback-section .feedback-form button:hover {
+    background-color: rgb(102, 88, 68);
+}
+
+.feedback-section.dark-mode .feedback-form button {
+    background-color: rgb(99, 82, 58);
+}
+
+.feedback-section.dark-mode .feedback-form button:hover {
+    background-color: rgb(122, 100, 72);
 }

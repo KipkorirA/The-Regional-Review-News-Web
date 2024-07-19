@@ -28,6 +28,20 @@
                     "image": "https://kubrick.htvapps.com/htv-prod-media.s3.amazonaws.com/images/paris-olympics-64c18eddad4f8.jpg?crop=1.00xw:1.00xh;0,0&resize=900:*",
                     "date": "JULY 16, 2024",
                     "headline": "true"
+                },
+                {
+                    "id":3,
+                    "title":"Manchester United have signed French defender Leny Yoro from Lille until 2029 in a deal worth 62m euros (£52.18m), with 8m euros (£6.73m) in add-ons.",
+                    "image":"https://ichef.bbci.co.uk/news/976/cpsprodpb/6aa5/live/285d7ef0-44da-11ef-bb68-c9ac56984dad.jpg.webp",
+                    "date":"Jul 19, 2024",
+                    "headline":"true"
+                },
+                {
+                    "id":4,
+                    "title":"Plenty of Premier League clubs are on the hunt for a new forward in the summer transfer window, but which players are likely to move?",
+                    "image":"https://ichef.bbci.co.uk/news/976/cpsprodpb/950f/live/e2c99850-4372-11ef-81b7-eb26ff9f97f3.png.webp",
+                    "date":"Jul 19, 2024",
+                    "headline":"false"
                 }
             ]
         },
@@ -73,6 +87,13 @@
                     "image": "https://cioafrica.co/wp-content/uploads/2024/06/R.png",
                     "date": "Jul 16, 2024",
                     "headline": "false"
+                },                
+                {
+                    "id": 3,
+                    "title": "OpenAI unveils cheaper small AI model GPT-4o mini",
+                    "image": "https://www.reuters.com/resizer/v2/CDEOSAJGPFMZXFGWPKIM7WBGHE.jpg?auth=fa9a064bfc16c4b64457ec8a9a3b70c8ab5a8d2334890d54d336da20e94a2369&width=640&quality=80",
+                    "date": "Jul 19, 2024",
+                    "headline": "true"
                 }
             ]
         },
@@ -84,6 +105,20 @@
                     "title": "Adam Sandler still gets emotional singing sweet Chris Farley song",
                     "image": "https://media.cnn.com/api/v1/images/stellar/prod/221004140433-adam-sandler-100122.jpg?c=16x9&q=h_653,w_1160,c_fill/f_webp",
                     "date": "Mon December 5, 2022",
+                    "headline": "true"
+                },
+                {
+                    "id": 1,
+                    "title": "Who Is Joan Vassos? Meet the 1st ‘Golden Bachelorette’ Star as She Prepares to Find Love",
+                    "image": "https://www.lifeandstylemag.com/wp-content/uploads/2024/05/Who-Is-Joan-Vassos-Meet-the-1st-Golden-Bachelorette-Star-01.jpeg?crop=0px%2C257px%2C1080px%2C612px&resize=940%2C529&quality=86&strip=all",
+                    "date": "MAY 17, 2024 6:29 PM",
+                    "headline": "true"
+                },
+                {
+                    "id": 1,
+                    "title": "Brad Pitt and Angelina Jolie’s Kid Shiloh Thinks Being a Nepo Baby Isn’t ‘Cool’: ‘Wants to Be Normal’",
+                    "image": "https://media.cnn.com/api/v1/images/stellar/prod/221004140433-adam-sandler-100122.jpg?c=16x9&q=h_653,w_1160,c_fill/f_webp",
+                    "date": "JUL 18, 2024 5:04 PM",
                     "headline": "true"
                 }
             ]

@@ -5,25 +5,22 @@ const topNewsContainer = document.querySelector('.topNews');
 const sportsNewsContainer = document.querySelector('#sportsNews .newsBox');
 const technologyNewsContainer = document.querySelector('#technologyNews .newsBox');
 const businessNewsContainer = document.querySelector('#businessNews .newsBox');
-const lifeStyleNewsContainer = document.querySelector('#lifeStyleNews .newsBox'); // Added for Life & Style news
+const lifeStyleNewsContainer = document.querySelector('#lifeStyleNews .newsBox');
 const filterButton = document.querySelector('#filterButton');
-const header = document.getElementById('header'); // Header element
+const header = document.querySelector('.header'); // Updated to match the class name
 
 // URL for fetching news data
-const newsUrl = "http://localhost:3000/news";
+const newsUrl = "https://project-deploy-link.vercel.app/news";
 
 // Function to fetch data from the server
 const fetchData = async () => {
-    try {
-        const response = await fetch(newsUrl);
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+    const response = await fetch(newsUrl);
+    if (response.ok) {
         const data = await response.json();
         console.log('Fetched data:', data);
         return data;
-    } catch (error) {
-        console.error(`Error fetching data:`, error);
+    } else {
+        console.error(`HTTP error! Status: ${response.status}`);
         return [];
     }
 }
@@ -32,7 +29,7 @@ const fetchData = async () => {
 const addBreakingNews = (data) => {
     console.log('Adding breaking news:', data); // Log the data being processed
     if (data.items && data.items.length > 0) {
-        const breaking = data.items.find(item => item.id === 1); // Find the item with ID 1
+        const breaking = data.items.find(item => item.id !== 0); 
         if (breaking && breaking.image && breaking.title && breaking.date) {
             breakingImg.src = breaking.image;
             breakingImg.alt = breaking.title;
@@ -59,7 +56,7 @@ const addTopNews = (newsData) => {
 
             // Create anchor element for the news title (link)
             const newsLink = document.createElement('a');
-            newsLink.href = `page2.html?id=${item.id}`; // Link to the news details page
+            newsLink.href = `#section-${item.id}`; // Link to the section on the same page
             newsLink.textContent = item.title; // News title
             newsLink.classList.add('title-link');
 
@@ -80,7 +77,7 @@ const addSportsNews = (data) => {
             if (element.id === 1 || element.id === 2) { // Check if the item has ID 1 or 2
                 if (element.title && element.image && element.date) {
                     let title = element.title.length < 100 ? element.title : element.title.slice(0, 100) + "...";
-                    html += `<div class="newsCard">
+                    html += `<div class="newsCard" id="section-${element.id}">
                                 <div class="img">
                                     <img src="${element.image}" alt="${element.title}">
                                 </div>
@@ -110,7 +107,7 @@ const addTechnologyNews = (data) => {
             if (element.id === 1 || element.id === 2) { // Check if the item has ID 1 or 2
                 if (element.title && element.image && element.date) {
                     let title = element.title.length < 100 ? element.title : element.title.slice(0, 100) + "...";
-                    html += `<div class="newsCard">
+                    html += `<div class="newsCard" id="section-${element.id}">
                                 <div class="img">
                                     <img src="${element.image}" alt="${element.title}">
                                 </div>
@@ -140,7 +137,7 @@ const addBusinessNews = (data) => {
             if (element.id === 1 || element.id === 2 || element.id === 3) { // Check if the item has ID 1, 2, or 3
                 if (element.title && element.image && element.date) {
                     let title = element.title.length < 100 ? element.title : element.title.slice(0, 100) + "...";
-                    html += `<div class="newsCard">
+                    html += `<div class="newsCard" id="section-${element.id}">
                                 <div class="img">
                                     <img src="${element.image}" alt="${element.title}">
                                 </div>
@@ -170,7 +167,7 @@ const addLifeStyleNews = (data) => {
             if (element.id === 1) { // Adjust IDs as needed
                 if (element.title && element.image && element.date) {
                     let title = element.title.length < 100 ? element.title : element.title.slice(0, 100) + "...";
-                    html += `<div class="newsCard">
+                    html += `<div class="newsCard" id="section-${element.id}">
                                 <div class="img">
                                     <img src="${element.image}" alt="${element.title}">
                                 </div>
@@ -230,4 +227,43 @@ fetchAndDisplayData();
 // Event listener for the filter button
 filterButton.addEventListener('click', () => {
     // Filter button functionality goes here
+});
+
+// Scroll event listener for hiding/showing header
+let lastScrollTop = 0;
+
+window.addEventListener('scroll', function() {
+    let currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScrollTop > lastScrollTop) {
+        // Scrolling down
+        header.classList.add('hidden');
+    } else {
+        // Scrolling up
+        header.classList.remove('hidden');
+    }
+
+    lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+});
+
+// script.js
+document.addEventListener('DOMContentLoaded', () => {
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    // Check if dark mode was previously enabled
+    if (localStorage.getItem('dark-mode') === 'enabled') {
+        body.classList.add('dark-mode');
+    }
+
+    darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+
+        // Save the dark mode state in localStorage
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('dark-mode', 'enabled');
+        } else {
+            localStorage.setItem('dark-mode', 'disabled');
+        }
+    });
 });

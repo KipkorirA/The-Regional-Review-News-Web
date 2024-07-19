@@ -8,6 +8,7 @@
     <script src="/script/app.js" defer></script>
 </head>
 <body>
+    
     <div class="header">
         <div class="logo">
             <img src="/Images/REGIONAL-removebg-preview.png" alt="Regional Review Logo">
@@ -21,7 +22,7 @@
                 <li><a href="#lifeStyleNews">Life & Style</a></li>
             </ul>            
         </nav>
-        <button id="filterButton">Filter by Date</button> <!-- Filter Button -->
+        <button id="filterButton">Filter by Date</button>
     </div>  
     <div class="topHeadlines">
         <div class="left">
@@ -33,7 +34,6 @@
             </div>
             <div class="text" id="breakingNews">
                 <div class="description">
-                    <!-- Content dynamically added by JavaScript -->
                 </div>                
             </div>
         </div>
@@ -41,7 +41,21 @@
             <div class="title">
                 <h2>Top Headlines</h2>
             </div>   
-            <div class="topNews"></div> <!-- Top News dynamically added by JavaScript -->
+            <div class="topNews" id="topNews">
+                <div class="news">
+                    <div class="text">
+                        <div class="title">
+                            <a href="#businessNews">Business News Headline</a>
+                        </div>
+                        <div class="description">
+                            Brief description of the business news.
+                        </div>
+                        <div class="source">
+                            Source: Example News
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>     
     </div>  
     <div class="page2">
@@ -49,28 +63,27 @@
             <div class="title">
                 <h4>Business News</h4>
             </div>
-            <div class="newsBox"></div> <!-- Business News dynamically added by JavaScript -->
+            <div class="newsBox"></div> 
         </div>
         <div class="news" id="sportsNews">
             <div class="title">
                 <h4>Sports News</h4>
             </div>
-            <div class="newsBox"></div> <!-- Sports News dynamically added by JavaScript -->
+            <div class="newsBox"></div> 
         </div>
         <div class="news" id="technologyNews">
             <div class="title">
                 <h4>Technology News</h4>
             </div>
-            <div class="newsBox"></div> <!-- Technology News dynamically added by JavaScript -->
+            <div class="newsBox"></div> 
         </div>
         <div class="news" id="lifeStyleNews">
             <div class="title">
                 <h4>Life & Style News</h4>
             </div>
-            <div class="newsBox"></div> <!-- Life & Style News dynamically added by JavaScript -->
+            <div class="newsBox"></div> 
         </div>
     </div>
-
     <div class="feedback">
         <h2>Feedback</h2>
         <form id="feedbackForm">
@@ -78,5 +91,6 @@
             <button type="submit">Submit</button>
         </form>
     </div>
+    <button id="darkModeToggle">Toggle Dark Mode</button>
 </body>
 </html>
