@@ -7,7 +7,7 @@ const technologyNewsContainer = document.querySelector('#technologyNews .newsBox
 const businessNewsContainer = document.querySelector('#businessNews .newsBox');
 const lifeStyleNewsContainer = document.querySelector('#lifeStyleNews .newsBox');
 const filterButton = document.querySelector('#filterButton');
-const header = document.querySelector('.header'); // Updated to match the class name
+const header = document.querySelector('.header'); 
 
 // URL for fetching news data
 const newsUrl = "https://project-deploy-link.vercel.app/news";
@@ -27,7 +27,7 @@ const fetchData = async () => {
 
 // Function to process and add breaking news to the DOM
 const addBreakingNews = (data) => {
-    console.log('Adding breaking news:', data); // Log the data being processed
+    console.log('Adding breaking news:', data); 
     if (data.items && data.items.length > 0) {
         const breaking = data.items.find(item => item.id !== 0); 
         if (breaking && breaking.image && breaking.title && breaking.date) {
@@ -71,10 +71,10 @@ const addTopNews = (newsData) => {
 
 // Function to process and add sports news to the DOM
 const addSportsNews = (data) => {
-    if (sportsNewsContainer) { // Check if sportsNewsContainer exists
+    if (sportsNewsContainer) { 
         let html = '';
         data.items.forEach(element => {
-            if (element.id === 1 || element.id === 2) { // Check if the item has ID 1 or 2
+            if (element.id !== 0) { 
                 if (element.title && element.image && element.date) {
                     let title = element.title.length < 100 ? element.title : element.title.slice(0, 100) + "...";
                     html += `<div class="newsCard" id="section-${element.id}">
@@ -101,10 +101,10 @@ const addSportsNews = (data) => {
 
 // Function to process and add technology news to the DOM
 const addTechnologyNews = (data) => {
-    if (technologyNewsContainer) { // Check if technologyNewsContainer exists
+    if (technologyNewsContainer) { 
         let html = '';
         data.items.forEach(element => {
-            if (element.id === 1 || element.id === 2) { // Check if the item has ID 1 or 2
+            if (element.id !== 0) { 
                 if (element.title && element.image && element.date) {
                     let title = element.title.length < 100 ? element.title : element.title.slice(0, 100) + "...";
                     html += `<div class="newsCard" id="section-${element.id}">
@@ -131,10 +131,10 @@ const addTechnologyNews = (data) => {
 
 // Function to process and add business news to the DOM
 const addBusinessNews = (data) => {
-    if (businessNewsContainer) { // Check if businessNewsContainer exists
+    if (businessNewsContainer) { 
         let html = '';
         data.items.forEach(element => {
-            if (element.id === 1 || element.id === 2 || element.id === 3) { // Check if the item has ID 1, 2, or 3
+            if (element.id === 1 || element.id === 2 || element.id === 3) { 
                 if (element.title && element.image && element.date) {
                     let title = element.title.length < 100 ? element.title : element.title.slice(0, 100) + "...";
                     html += `<div class="newsCard" id="section-${element.id}">
@@ -161,10 +161,10 @@ const addBusinessNews = (data) => {
 
 // Function to process and add Life & Style news to the DOM
 const addLifeStyleNews = (data) => {
-    if (lifeStyleNewsContainer) { // Check if lifeStyleNewsContainer exists
+    if (lifeStyleNewsContainer) { 
         let html = '';
         data.items.forEach(element => {
-            if (element.id === 1) { // Adjust IDs as needed
+            if (element.id === 1) { 
                 if (element.title && element.image && element.date) {
                     let title = element.title.length < 100 ? element.title : element.title.slice(0, 100) + "...";
                     html += `<div class="newsCard" id="section-${element.id}">
@@ -210,7 +210,7 @@ const fetchAndDisplayData = async () => {
                 addBusinessNews(category);
                 topNews = topNews.concat(category.items.filter(item => item.headline === "true"));
                 break;
-            case 'life & style': // Ensure this matches exactly with your JSON category
+            case 'life & style':
                 addLifeStyleNews(category);
                 topNews = topNews.concat(category.items.filter(item => item.headline === "true"));
                 break;
@@ -225,9 +225,7 @@ const fetchAndDisplayData = async () => {
 fetchAndDisplayData();
 
 // Event listener for the filter button
-filterButton.addEventListener('click', () => {
-    // Filter button functionality goes here
-});
+filterButton.addEventListener('click', () => {});
 
 // Scroll event listener for hiding/showing header
 let lastScrollTop = 0;
@@ -236,10 +234,8 @@ window.addEventListener('scroll', function() {
     let currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     if (currentScrollTop > lastScrollTop) {
-        // Scrolling down
         header.classList.add('hidden');
     } else {
-        // Scrolling up
         header.classList.remove('hidden');
     }
 
@@ -251,7 +247,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
 
-    // Check if dark mode was previously enabled
     if (localStorage.getItem('dark-mode') === 'enabled') {
         body.classList.add('dark-mode');
     }
@@ -259,7 +254,6 @@ document.addEventListener('DOMContentLoaded', () => {
     darkModeToggle.addEventListener('click', () => {
         body.classList.toggle('dark-mode');
 
-        // Save the dark mode state in localStorage
         if (body.classList.contains('dark-mode')) {
             localStorage.setItem('dark-mode', 'enabled');
         } else {
