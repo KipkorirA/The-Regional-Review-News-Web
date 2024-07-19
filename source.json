@@ -7,7 +7,8 @@
                     "id": 1,
                     "title": "United Nations voices concern over police brutality during maandamano",
                     "image": "https://nnmedia.nation.africa/uploads/2023/07/Protests-1.jpg",
-                    "date": "JULY 16, 2024"
+                    "date": "Today",
+                    "headline": "false"
                 }
             ]
         },
@@ -18,13 +19,15 @@
                     "id": 1,
                     "title": "Gor Mahia held by ASAS Djibouti Telecom",
                     "image": "https://gornews.co.ke/wp-content/uploads/2024/07/gor_asc-1296x700.jpg",
-                    "date": "JULY 14, 2024"
+                    "date": "JULY 14, 2024",
+                    "headline": "true"
                 },
                 {
                     "id": 2,
                     "title": "The 4 new events coming to the 2024 Paris Olympics",
                     "image": "https://kubrick.htvapps.com/htv-prod-media.s3.amazonaws.com/images/paris-olympics-64c18eddad4f8.jpg?crop=1.00xw:1.00xh;0,0&resize=900:*",
-                    "date": "JULY 16, 2024"
+                    "date": "JULY 16, 2024",
+                    "headline": "true"
                 }
             ]
         },
@@ -35,19 +38,22 @@
                     "id": 1,
                     "title": "High Return Businesses to Invest in Post-Coronavirus",
                     "image": "https://businesstoday.co.ke/wp-content/uploads/2019/10/small-business-loans-in-Kenya-KYEOP-opportunities-1024x517.jpg",
-                    "date": "Jul 16, 2024"
+                    "date": "Jul 16, 2024",
+                    "headline": "false"
                 },
                 {
                     "id": 2,
                     "title": "Skincare Firm Successfully Closes Oversubscribed $1.4 Million Funding",
                     "image": "https://businesstoday.co.ke/wp-content/uploads/2024/07/Skincare-Firm-Uncover-Nigeria-Experience-Hub-1024x640.jpg",
-                    "date": "Jul 16, 2024"
+                    "date": "Jul 16, 2024",
+                    "headline": "true"
                 },
                 {
                     "id": 3,
                     "title": "Equity Group Renews Global Digital Money Transfer Partnership",
                     "image": "https://businesstoday.co.ke/wp-content/uploads/2024/07/Equity-Bank-diaspora-account-1024x746.jpeg",
-                    "date": "Jul 16, 2024"
+                    "date": "Jul 16, 2024",
+                    "headline": "false"
                 }
             ]
         },
@@ -58,13 +64,27 @@
                     "id": 1,
                     "title": "Lecturers Call For Infrastructure Improvement To Ease AI Adoption",
                     "image": "https://cioafrica.co/wp-content/uploads/2024/07/Microsoft-ADC-Uni-Lecturers-1024x685.jpg",
-                    "date": "Jul 16, 2024"
+                    "date": "Jul 16, 2024",
+                    "headline": "true"
                 },
                 {
                     "id": 2,
                     "title": "Don’t Turn Off Internet – Kenyan Govt Urged",
                     "image": "https://cioafrica.co/wp-content/uploads/2024/06/R.png",
-                    "date": "Jul 16, 2024"
+                    "date": "Jul 16, 2024",
+                    "headline": "false"
+                }
+            ]
+        },
+        {
+            "category": "life & style",
+            "items": [
+                {
+                    "id": 1,
+                    "title": "Adam Sandler still gets emotional singing sweet Chris Farley song",
+                    "image": "https://media.cnn.com/api/v1/images/stellar/prod/221004140433-adam-sandler-100122.jpg?c=16x9&q=h_653,w_1160,c_fill/f_webp",
+                    "date": "Mon December 5, 2022",
+                    "headline": "true"
                 }
             ]
         }

@@ -1,241 +1,339 @@
-*{
-    margin: 0;    
+/* Reset and basic styles */
+* {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
+    font-family: Arial, sans-serif;
     background-color: rgb(243, 151, 22);
-    width: 100%;
-    min-height: 100vh;
-    color: rgb(26, 5, 5);    
+    color: rgb(26, 5, 5);
+    margin: 0;
+    padding: 0;
 }
 
-::-webkit-scrollbar{
-    width: 8px;
-}
-
-::-webkit-scrollbar-track{
-    background-color: transparent;
-}
-
-::-webkit-scrollbar-thumb{
-    background-color: burlywood;
-    border-radius: 100px;
-}
-
-.topHeadlines .right .topNews::-webkit-scrollbar{
-    width: 6px;
-}
-
-.topHeadlines .right .topNews::-webkit-scrollbar-thumb{
-    background-color: blanchedalmond;
-}
-
-
-.header{
-    position: fixed;
+/* Navigation styling */
+nav ul {
     display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    width: 100%;
-    background-color: rgb(248, 245, 245);
-    padding: 20px 50px;  
-    height: 200px;   
+    justify-content: center;
 }
 
-.logo{
-    cursor: pointer;
-}
-nav ul{
-    display: flex;
-}
-
-nav ul li{
+nav ul li {
     list-style: none;
     margin: 0 15px;
     padding: 0 10px;
-    border-left: 1px solid grey;
-    border-right: 1px solid grey;
-    transition: 0.3s;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    transition: border-color 0.3s ease;
 }
 
-nav ul li:hover{
-    border-left: 1px solid violet;
-    border-right: 1px solid violet;
+nav ul li:hover {
+    border-color: violet;
 }
 
 nav ul li a {
     text-decoration: none;
     color: blue;
     letter-spacing: 1px;
+    font-size: 16px;
 }
 
-.topHeadlines{
-    padding: 220px 50px 50px;
-    width: 100%;   
+.header {
+    position: fixed;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-color: #fff;
+    padding: 0 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Filter Button */
+#filterButton {
+    background-color: rgb(77, 64, 46);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+
+#filterButton:hover {
+    background-color: rgb(102, 88, 68);
+}
+
+.topHeadlines {
+    margin: 200px 0 0;
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    border-top: 2px solid #ccc;
 }
 
-.topHeadlines .left{
-    padding: 10px 30px;
-    /* background-color: rgb(236, 231, 231); */
+.topHeadlines .title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
 }
 
-.topHeadlines .left > .title{
-    font-size: 20px;
-    padding: 15px;   
-    text-align: center; 
+.topHeadlines .left {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.topHeadlines .left .img{
-    width: auto;
+.topHeadlines .left .title {
+    background-color: rgb(153, 9, 9);
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #f0ebeb;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.topHeadlines .left .img {
     height: auto;
-    background-color: brown;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 8px;
 }
 
-.topHeadlines .left .img img{
+.topHeadlines .left .img img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
-.topHeadlines .left h6{
-    font-size: 30px;
+.topHeadlines .left .text {
+    padding: 20px;
+    text-align: center;
 }
 
-.topHeadlines .left .text{
-    padding: 20px 15px 10px;
-
+.topHeadlines .left .description {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.5;
+    text-align: justify;
 }
 
-.topHeadlines .left .text .title h4{
-    font-size: 20px;
-    letter-spacing: 1px;
-    display: inline;
-    cursor: pointer;    
-}
-
-.topHeadlines .left .text h4:hover{
-    text-decoration: underline;
-}
-
-.topHeadlines .left .text .description{
-    font-size: 15px;
-    margin: 10px;
-    color: rgb(5, 5, 49);
-    letter-spacing: 1px;
-}
-
-.topHeadlines .right{
-    padding: 10px;
-    margin: 10px;
-    width: 1005;
-    height: 500px;
-    /* background-color: wheat; */
-
-}
-
-.topHeadlines .right > .title{
-    font-size: 20px;
-    padding: 15px;
-    text-align: center;     
-}
-
-.topHeadlines .right .topNews{
-    padding: 7px;
-    height: 85%;
-    background-color: wheat;
-    border: 1px solid white;
-    border-radius: 4px;  
-    overflow-y: scroll;
-}
-
-.topHeadlines .right .topNews .news{
-    display: grid;
-    grid-template-columns: auto auto;
-    align-items: center;
-    margin-bottom: 20px;
-
-}
-
-.topHeadlines .right .topNews .news .img{
-    width: 170px;
-    height: 120px;
-    background-color: rgb(160, 99, 99);
-}
-
-.topHeadlines .right .topNews .news .text{
-    margin-inline: 10px;
-}
-
-.topHeadlines .right .topNews .news .text .title{
-    cursor: pointer;    
-}
-
-.topHeadlines .right .topNews .news .text .title:hover{
-    text-decoration: underline;
-}
-
-.page2{
+.topHeadlines .right {
+    background-color: #f2f2f2;
     width: 100%;
-    background-color: rgb(202, 156, 55);
-    min-height: 100vh;
-    padding: 50px;    
-}
-
-.page2 .news{
-    padding: 30px 0;
-    border-bottom: 1px solid whitesmoke;
-}
-
-.page2 .news:last-child{
-    padding: 30px 0;
-    border-bottom: none;
-}
-
-
-.page2 .news > .title h4{
-    font-size: 40px;
-    cursor: pointer;
-    display: inline;
-}
-
-.page2 .news > .title h4:hover{
-    text-decoration: underline;
-}
-
-.page2 .news .newsBox{
-    width: 100%;
-    background-color: azure;
-    margin-top: 20px;
+    padding: 20px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.page2 .news .newsBox .newsCard{
-    width: calc(100% / 5 - 20px);
-    /* min-height: 250px; */
-    margin: 10px;
-    background-color: yellowgreen;
+.topHeadlines .right .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
 }
 
-.page2 .news .newsBox .newsCard .text{
+.topHeadlines .right .topNews {
+    max-width: 500px;
+    max-height: auto;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
     padding: 10px;
 }
 
-.page2 .news .newsBox .newsCard .img{
+.topHeadlines .right .topNews .news {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.topHeadlines .right .topNews .news:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.topHeadlines .right .topNews .news .img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.topHeadlines .right .topNews .news .img img {
     width: 100%;
-    height: 150px;
-    background-color: blueviolet;
+    height: 100%;
+    object-fit: cover;
 }
 
-.page2 .news .newsBox .newsCard .title p{
-    font-size: 15px;
-    display: inline;
-    cursor: pointer;
+.topHeadlines .right .topNews .news .text {
+    flex: 1;
 }
 
-.page2 .news .newsBox .newsCard .title p:hover{
+.topHeadlines .right .topNews .news .text .title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.topHeadlines .right .topNews .news .text .description {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 5px;
+}
+
+.topHeadlines .right .topNews .news .text .source {
+    font-size: 12px;
+    color: #999;
+}
+
+.page2 {
+    background-color: rgb(202, 156, 55);
+    padding: 50px;
+    min-height: 100vh;
+}
+
+.page2 .news {
+    margin-bottom: 40px;
+}
+
+.page2 .news:last-child {
+    margin-bottom: 0;
+}
+
+.page2 .news .title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.page2 .news .newsBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.page2 .news .newsBox .newsCard {
+    width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.page2 .news .newsBox .newsCard img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.page2 .news .newsBox .newsCard .text {
+    padding: 15px;
+}
+
+.page2 .news .newsBox .newsCard .title p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.page2 .news .newsBox .newsCard .title p:hover {
     text-decoration: underline;
 }
 
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: burlywood;
+    border-radius: 100px;
+}
+
+.topHeadlines .right .topNews::-webkit-scrollbar {
+    width: 6px;
+}
+
+.topHeadlines .right .topNews::-webkit-scrollbar-thumb {
+    background-color: rgb(77, 64, 46);
+}
+
+.feedback {
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.feedback h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+#feedbackText {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#feedbackText:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+#feedbackForm button[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+#feedbackForm button[type="submit"]:hover {
+    background-color: #2980b9;
+}
