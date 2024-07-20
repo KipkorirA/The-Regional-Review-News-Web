@@ -17,7 +17,7 @@
 
 ### Prerequisites
 
-- Web server to serve the files (e.g., localhost server like XAMPP, WAMP, or any other).
+- Web server to serve the files.
 - Modern web browser.
 
 ### Installation
@@ -80,7 +80,7 @@
 
 ### Prerequisites
 
-- Web server to serve the files (e.g., localhost server like XAMPP, WAMP, or any other).
+- Web server to serve the files.
 - Modern web browser.
 
 ### Installation
@@ -120,6 +120,7 @@
 
 - Implement the filter functionality to allow users to filter news by specific dates.
 - Improve error handling and user experience.
+- Add pages for specific news information.
 
 ### Contributing
 
