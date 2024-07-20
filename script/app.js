@@ -51,20 +51,16 @@ const addTopNews = (newsData) => {
     // Loop through newsData items
     newsData.forEach(item => {
         if (item.headline === "true") {
-            // Create news element
             const newsElement = document.createElement('div');
             newsElement.classList.add('news');
 
-            // Create anchor element for the news title (link)
             const newsLink = document.createElement('a');
             newsLink.href = `#section-${item.id}`; 
             newsLink.textContent = item.title; 
             newsLink.classList.add('title-link');
 
-            // Append the news link to the news element
             newsElement.appendChild(newsLink);
 
-            // Append the news element to the topNewsContainer
             topNewsContainer.appendChild(newsElement);
         }
     });
@@ -225,10 +221,8 @@ const fetchAndDisplayData = async () => {
 // Initial data fetch and display
 fetchAndDisplayData();
 
-// Event listener for the filter button
 filterButton.addEventListener('click', () => {});
 
-// Scroll event listener for hiding/showing header
 let lastScrollTop = 0;
 
 window.addEventListener('scroll', function() {

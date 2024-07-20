@@ -1,6 +1,6 @@
 # The Regional Review
 
-![Screenshot](/Images/screenshot.jpg) [demo](https://the-regional-review-news-web.vercel.app/)
+![Screenshot](/Images/screenshot.jpg) [deploy link](https://the-regional-review-news-web.vercel.app/)
 
 **The Regional Review** is a dynamic news website that provides up-to-date news across various categories including Sports, Business, Technology, and Life & Style. The website features a responsive design and allows users to filter news by date and provide feedback.
 
