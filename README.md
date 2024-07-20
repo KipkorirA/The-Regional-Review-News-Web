@@ -25,7 +25,7 @@
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/yourusername/your-repository.git
+    git clone https://github.com/KipkorirA/The-Regional-Review-News-Web
     ```
 
 2. **Navigate to the project directory:**
@@ -88,7 +88,7 @@
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/yourusername/your-repository.git
+    git clone https://github.com/KipkorirA/The-Regional-Review-News-Web
     ```
 
 2. **Navigate to the project directory:**
