@@ -28,6 +28,7 @@ const fetchData = async () => {
 // Function to process and add breaking news to the DOM
 const addBreakingNews = (data) => {
     console.log('Adding breaking news:', data); 
+
     if (data.items && data.items.length > 0) {
         const breaking = data.items.find(item => item.id !== 0); 
         if (breaking && breaking.image && breaking.title && breaking.date) {
@@ -56,8 +57,8 @@ const addTopNews = (newsData) => {
 
             // Create anchor element for the news title (link)
             const newsLink = document.createElement('a');
-            newsLink.href = `#section-${item.id}`; // Link to the section on the same page
-            newsLink.textContent = item.title; // News title
+            newsLink.href = `#section-${item.id}`; 
+            newsLink.textContent = item.title; 
             newsLink.classList.add('title-link');
 
             // Append the news link to the news element
@@ -242,7 +243,6 @@ window.addEventListener('scroll', function() {
     lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
 });
 
-// script.js
 document.addEventListener('DOMContentLoaded', () => {
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
