@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors List</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Link to your CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+        th {
+            background-color: #f8f8f8;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #dc3545; /* Bootstrap's danger color */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #c82333; /* Darker shade on hover */
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .back-link {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Authors</h1>
+
+        <!-- Back link -->
+        <p class="back-link">
+            <a href="/" style="text-decoration: none; color: blue;">&larr; Back to Home</a>
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (authors && authors.length > 0) { %>
+                    <% authors.forEach(author => { %>
+                        <tr>
+                            <td><%= author.name %></td>
+                            <td><%= author.email %></td>
+                            <td>
+                                <a href="/authors/<%= author._id %>/addArticle" style="text-decoration: none; color: green;">Add Article</a> | <!-- Link to addArticle page -->
+                                <button onclick="deleteAuthor('<%= author._id %>')">Delete</button>
+                            </td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="3">No authors found.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+        <h2>Subscribe New Author</h2>
+        <form id="subscribeAuthorForm">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <button type="submit">Subscribe</button>
+            <div class="error-message" id="subscribeErrorMessage"></div> <!-- Placeholder for error messages -->
+        </form>
+    </div>
+
+    <script>
+        async function deleteAuthor(authorId) {
+            const response = await fetch(`/api/authors/${authorId}`, {
+                method: 'DELETE',
+            });
+            if (response.ok) {
+                location.reload(); // Reload to see the updated authors list
+            } else {
+                alert('Error deleting author');
+            }
+        }
+
+        // Handle subscribe form submission
+        document.getElementById('subscribeAuthorForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            const response = await fetch('/api/authors', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email }),
+            });
+
+            if (response.ok) {
+                location.reload(); // Reload to see the new author added
+            } else {
+                const errorData = await response.json();
+                document.getElementById('subscribeErrorMessage').textContent = errorData.message || 'Error subscribing author';
+            }
+        });
+    </script>
+</body>
+</html>

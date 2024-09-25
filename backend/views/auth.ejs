@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login Page</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Link to your CSS if needed -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        div {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745; /* Green color for the button */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Login</h1>
+        <form id="loginForm" action="/api/auth/login" method="POST"> <!-- Ensure this matches your server route -->
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required aria-label="Username" minlength="3">
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required aria-label="Password" minlength="6">
+            </div>
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="back-link">
+            <a href="/" style="text-decoration: none; color: blue;">← Back to Home</a> <!-- Link back to the homepage or another relevant page -->
+        </div>
+        <div class="error-message" id="error-message"></div> <!-- Placeholder for error messages -->
+    </div>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const errorMessageDiv = document.getElementById('error-message');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent the default form submission
+
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (response.ok) {
+                const result = await response.json(); // Get the response data
+                window.location.href = result.redirect; // Redirect to the original requested URL
+            } else {
+                const errorData = await response.json();
+                errorMessageDiv.textContent = errorData.message || 'Login failed. Please try again.'; // Show error message
+            }
+        });
+    </script>
+</body>
+</html>
